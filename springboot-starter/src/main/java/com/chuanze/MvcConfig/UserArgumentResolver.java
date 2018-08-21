@@ -10,6 +10,9 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 封装包装默认入参
+ */
 public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override

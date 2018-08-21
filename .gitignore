@@ -55,3 +55,4 @@ target/
 # system ingore
 .DS_Store
 Thumbs.dpspringboot-starter/.mvnspringboot-config/.mvnspringboot-starter/.mvnspringboot-starter/.mvn
+springboot-starter/src/main/resources/rebel.xml
