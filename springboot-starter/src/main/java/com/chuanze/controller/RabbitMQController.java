@@ -2,6 +2,7 @@ package com.chuanze.controller;
 
 import com.chuanze.rabbitmq.direct.DirectSender;
 import com.chuanze.rabbitmq.fanout.FanoutSender;
+import com.chuanze.rabbitmq.header.HeaderSender;
 import com.chuanze.rabbitmq.topic.TopicSender;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
@@ -23,6 +24,8 @@ public class RabbitMQController {
     @Autowired
     FanoutSender fanoutSender;
 
+    @Autowired
+    HeaderSender headerSender;
     @RequestMapping("direct")
     public String directType(@RequestParam(value = "message",required = false,defaultValue = "") String message){
         log.info("Controller get the param:"+message);
@@ -47,6 +50,15 @@ public class RabbitMQController {
         if(StringUtils.isEmpty(message))
             message="This is FanoutType";
         fanoutSender.send(message);
+        return "Success";
+    }
+
+    @RequestMapping("header")
+    public String headerType(@RequestParam(value = "message",required = false,defaultValue = "") String message){
+        log.info("Controller get the param:"+message);
+        if(StringUtils.isEmpty(message))
+            message="This is headerType";
+        headerSender.sendHeader(message);
         return "Success";
     }
 }
